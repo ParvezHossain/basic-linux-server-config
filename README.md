@@ -1,5 +1,70 @@
 # basic-linux-server-config
 
+# Install Prometheus and Grafana
+
+    step-1: Create Prometheus system’s group 
+        - First, create a user and Prometheus system’s group before installing the prometheus on Ubuntu 22.04. To create the prometheus system group, execute the given command in terminal:
+    sudo groupadd --system prometheus
+    
+    Step-2: Add user to assign the group
+        - When the group is created, add the Prometheus user and assign it the created group. To add a user and assign the created group, type and run the following command in Linux terminal: 
+    sudo useradd -s /sbin/nologin --system -g prometheus prometheus
+
+    Step 3: Create directory
+        - The Prometheus has its own storing system. However, it stores the data using the directory. Therefore, to create the directory, run the following command:
+    
+    sudo mkdir /etc/prometheus
+        - It is the primary directory of Prometheus. However, it will have some sub directory. To create sub directory, run the below mentioned command:
+        sudo mkdir /var/lib/prometheus
+    
+    Step 4: Download, extract and move to the extracted folder
+        - And move the binary files to the local folder to change the directory. To move the files to /usr/local/bin, use the following command:
+    sudo mv prometheus promtool /usr/local/bin/
+    
+    Step 5: Move Prometheus configuration template
+        - When the installation is completed successfully, move the configuration template to the /etc directory for Prometheus configuration. To move the template, run the following command:
+    sudo mv prometheus.yml /etc/prometheus/prometheus.yml
+    
+    You should also move the console libraries to the /etc directory to change back to the home directory. To move the console libraries, type and run the following command:
+    sudo mv consoles/ console_libraries/ /etc/prometheus/
+
+    How to configure Prometheus on Ubuntu:
+    sudo nano /etc/prometheus/prometheus.yml
+
+    How to Create Prometheus systemd service
+        - If you want to start the prometheus automatically then you should create the prometheus systemd service file. Type and execute the command in terminal as given in following:
+    sudo nano /etc/systemd/system/prometheus.service
+        - And paste this
+
+    [Unit]
+    Description=Prometheus
+    Documentation=https://prometheus.io/docs/introduction/overview/
+    Wants=network-online.target
+    After=network-online.target
+    [Service]
+    User=prometheus
+    Group=prometheus
+    Type=simple
+    ExecStart=/usr/local/bin/prometheus \
+    --config.file /etc/prometheus/prometheus.yml \
+    --storage.tsdb.path /var/lib/prometheus/ \
+    --web.console.templates=/etc/prometheus/consoles \
+    --web.console.libraries=/etc/prometheus/console_libraries
+
+    [Install]
+    WantedBy=multi-user.target
+
+
+    How to Reload and enable the Prometheus:
+    sudo systemctl daemon-reload
+    sudo systemctl enable --now prometheus
+    sudo systemctl status prometheus
+    sudo ufw allow 9090/tcp
+
+    journalctl -t prometheus
+
+    Reference: https://itslinuxfoss.com/how-to-install-prometheus-on-ubuntu-22-04-lts/
+
 # Install php, MySQL, phpMyAdmin and access phpMyAdmin from browser
 
     sudo apt install mysql
