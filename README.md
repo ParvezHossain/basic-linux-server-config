@@ -2,6 +2,9 @@
 
 # Install Prometheus and Grafana
 
+    Use Prometheus from Docker Hub
+        -- docker pull prom/prometheus
+
     step-1: Create Prometheus system’s group 
         - First, create a user and Prometheus system’s group before installing the prometheus on Ubuntu 22.04. To create the prometheus system group, execute the given command in terminal:
     sudo groupadd --system prometheus
@@ -64,19 +67,30 @@
     journalctl -t prometheus
 
     Reference: https://itslinuxfoss.com/how-to-install-prometheus-on-ubuntu-22-04-lts/
+=======
+
+# Install Docker
+
+    curl -fsSL https://get.docker.com -o get-docker.sh
+    sudo sh get-docker.sh
+    sudo systemctl restart docker
+    sudo chmod 666 /var/run/docker.sock
 
 # Install php, MySQL, phpMyAdmin and access phpMyAdmin from browser
 
+    sudo apt install php-fpm php-mysql
+        - change fpm version in /etc/nginx/sites-available/default
+
     sudo apt install mysql
-        sudo systemctl status mysql.service
-            - check mysql status is avtive or inactive
-        sudo systemctl start mysql.service
-            - to start mysql
-        sudo mysql
-        ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
-        exit;
-        mysql -u root -p
-        ALTER USER 'root'@'localhost' IDENTIFIED WITH auth_socket;
+    sudo systemctl status mysql.service
+        - check mysql status is avtive or inactive
+    sudo systemctl start mysql.service
+        - to start mysql
+    sudo mysql
+    ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+    exit;
+    mysql -u root -p
+    ALTER USER 'root'@'localhost' IDENTIFIED WITH auth_socket;
 
     php-mbstring: A module for managing non-ASCII strings and convert strings to different encodings
     php-zip: This extension supports uploading .zip files to phpMyAdmin
@@ -126,7 +140,6 @@
 
 # install .deb file
     sudo dpkg -i <package-name>
-
 
 # git configuration:
     sudo apt install git -y
