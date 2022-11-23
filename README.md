@@ -67,7 +67,6 @@
     journalctl -t prometheus
 
     Reference: https://itslinuxfoss.com/how-to-install-prometheus-on-ubuntu-22-04-lts/
-=======
 
 # Install Docker
 
