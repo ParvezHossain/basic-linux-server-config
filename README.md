@@ -165,4 +165,5 @@ If ssh-copy-id does not work on windows machine, run this command
     - this will create a directory /var/www/html and a file index.nginx-debian.html
 
 
-
+# Install FTP server
+- https://linuxize.com/post/how-to-setup-ftp-server-with-vsftpd-on-ubuntu-20-04/
