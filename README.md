@@ -1,5 +1,17 @@
 # basic-linux-server-config
 
+# Login to linux server using public private key instead of password
+
+sudo apt install openssh-server
+sudo apt install openssh-clinet
+
+Generate rsa public/private key to the client machine
+- ssh-keygen -b 4096
+copy the authorized key to the server
+- ssh-copy-id -p 22 user@127.0.0.1
+If ssh-copy-id does not work on windows machine, run this command
+- Get-Content $env:USERPROFILE\.ssh\id_rsa.pub | ssh -p 22 user@127.0.0.1 "cat >> .ssh/authorized_keys"
+
 # Install Prometheus and Grafana
 
     Use Prometheus from Docker Hub
