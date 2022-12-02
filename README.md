@@ -1,5 +1,27 @@
 # basic-linux-server-config
 
+# Ubuntu server security tips
+
+- always keep your server up-to date
+sudo apt install update
+sudo apt dist-upgrade
+- show upgradeable package list
+sudo apt-show-versions | grep upgradeable
+
+sudo apt install apt-show-versions
+sudo apt install unattended-upgrades
+
+- automatically update the server
+
+sudo dpkg-reconfigure --priority=low unattended-upgrades
+- cd /etc/apt/apt.conf.d/
+- cat 20auto-upgrades
+- less 50uanttended-upgrades
+- sudo unattended-upgrade --dry-run --debug
+
+Use public/private keys for SSH connection 
+
+
 # Install Prometheus and Grafana
 
     Use Prometheus from Docker Hub
