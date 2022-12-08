@@ -149,7 +149,7 @@ If ssh-copy-id does not work on windows machine, run this command
         
 
 # Change ownership of directory(s) recursively
-- sudo chown -R $\{USER}:${USER} /var/www/html/
+- sudo chown -R `$`\{USER}:`$`{USER} /var/www/html/
 
 # Change permission of a file/folder recursively
 - sudo chmod -R 777 directory/file location
