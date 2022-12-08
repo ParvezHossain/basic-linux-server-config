@@ -1,5 +1,8 @@
 # basic-linux-server-config
 
+ # Practical Examples of Linux Find Command
+ - https://www.tecmint.com/35-practical-examples-of-linux-find-command/#:~:text=The%20find%20command%20is%20used,size%2C%20and%20other%20possible%20criteria
+
 # Login to linux server using public private key instead of password
 
 sudo apt install openssh-server
@@ -10,7 +13,7 @@ Generate rsa public/private key to the client machine
 copy the authorized key to the server
 - ssh-copy-id -p 22 user@127.0.0.1
 If ssh-copy-id does not work on windows machine, run this command
-- Get-Content $env:USERPROFILE\.ssh\id_rsa.pub | ssh -p 22 user@127.0.0.1 "cat >> .ssh/authorized_keys"
+- Get-Content $env:USERPROFILE"\".ssh\id_rsa.pub | ssh -p 22 user@127.0.0.1 "cat >> .ssh/authorized_keys"
 
 # Install Prometheus and Grafana
 
