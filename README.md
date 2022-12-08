@@ -1,5 +1,8 @@
 # basic-linux-server-config
 
+# Basic Linux Commands cheat sheet
+- https://cheat.sh/
+
  # Practical Examples of Linux Find Command
  - https://www.tecmint.com/35-practical-examples-of-linux-find-command/#:~:text=The%20find%20command%20is%20used,size%2C%20and%20other%20possible%20criteria
 
