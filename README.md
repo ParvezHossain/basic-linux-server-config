@@ -151,7 +151,6 @@ Use public/private keys for SSH connection
         - How to Delete UFW Rules in Ubuntu
     sudo ufw reset
         - to reset the firewall rules
-        
 
 # Change ownership of directory(s) recursively
     sudo chown -R ${USER}:${USER} /var/www/html/
@@ -172,5 +171,8 @@ Use public/private keys for SSH connection
     sudo apt install nginx -y 
         - this will create a directory /var/www/html and a file index.nginx-debian.html
 
+## PM2 — Restart Processes After System Reboot
 
-
+- <path-to-the-folder>/pm2 start index.js --name "Node Server"
+- pm2 save / user pm2 save --force if it does not save gracefully
+- pm2 startup upstart : this command will return a link like this "sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup upstart -u ubuntu --hp /home/ubuntu" copy and run this command
